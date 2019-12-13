@@ -7,13 +7,29 @@ require 'pry'
 def even_fibonacci_sum(limit)
     fibonacci = [1, 2]
     sum = 2
-    until fibonacci[-1] > limit 
+    until fibonacci[-1] > limit
+        # here I set a conditional to keep running the loop that builds the sequence until I reach the limit (knowing that the last number in the sequence goes past the limit)
         fibonacci << fibonacci[-1] + fibonacci[-2]
+        # here I build out the sequence ( fibonacci[-1] is the last number in the array, fibonacci[-2] is the second-to-last number in the array )
         if fibonacci[-1] % 2 == 0 && fibonacci[-1] < limit
+            # this conditional does 2 things - first, it checks to see if the last number in the array is even, and also checks to see that it doesn't exceed the limit (this takes care of having to go past the limit in the first step)
             sum = sum + fibonacci[-1]
+            # and here we increment the sum
         end
     end
     sum
 end
 
 even_fibonacci_sum(4000000)
+
+# This method returns the nth number in the fibonacci sequence
+# [1, 1, 2, 3, 5, 8, 13, 21]
+
+def fib(n)
+    if n <= 1
+        return n
+    end
+    return fib(n-1) + fib(n-2)
+end
+
+puts fib(6)
